@@ -1,5 +1,0 @@
-json==3.12.2
-requests==2.31.0
-urllib==3.12.2
-pyfigler==1.0.2
-termcolor==2.4.0
