@@ -19,7 +19,7 @@ for c in case:
 print(case)
 ```
 
-## Coin Operated Machine
+## Coke machine
 
 ```python
 # Set the initial amount due
@@ -57,7 +57,7 @@ change_owed = abs(amount_due)
 print(f"Change Owed: {change_owed}")
 ```
 
-## Fruit Calorie Lookup
+## Nutrition
 
 ```python
 # Get user input for the item and capitalize the first letter of each word
@@ -92,40 +92,76 @@ if item in fruits:
     print(f"Calories: {fruits.get(item)}")
 ```
 
-## Vowel Remover
+## Twttr
 
 ```python
-def main():
-    word = input("Input: ")
-    print(shorten(word))
+Define a list of vowels
+vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O"]
 
-def shorten(word):
-    vowels = "aeiouAEIOU"
-    for l in word:
-        if l in vowels:
-            word = word.replace(l, "")
-    return word
+Get user input
+s = input("Input: ")
 
-if __name__ == "__main__":
-    main()
+Iterate through each character in the input string
+for c in s:
+    # Check if the character is a vowel
+    if c in vowels:
+        # If it is a vowel, replace it with an empty string (remove it)
+        s = s.replace(c, "")
+
+Print the modified string without vowels
+print(s)
 ```
 
-Alternatively, the vowel remover can be implemented using a list of vowels:
-
+## Vanity plates
 ```python
-# Define a list of vowels
-# vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O"]
+def main():
+    # Get user input for the plate and convert it to uppercase
+    plate = input("Plate: ").upper()
+    
+    # Check if the plate is valid using the is_valid function
+    if is_valid(plate):
+        print("Valid")
+    else:
+        print("Invalid")
 
-# Get user input
-# s = input("Input: ")
 
-# Iterate through each character in the input string
-# for c in s:
-#     # Check if the character is a vowel
-#     if c in vowels:
-#         # If it is a vowel, replace it with an empty string (remove it)
-#         s = s.replace(c, "")
+def is_valid(s):
+    if length_function(s) and first_two_letter(s) and digits_from_end(s) and first_no_zero(s):
+        return True
+    return False
+def length_function(s):    
+    # Check if the length of the plate is not between 2 and 6 characters
+    if not (len(s) >= 2 and len(s) <= 6):
+        return False
+    return True
 
-# Print the modified string without vowels
-# print(s)
+def first_two_letter(s):
+    # Check if the first two characters are not alphabetic
+    if not s[:2].isalpha():
+        return False
+    return True
+
+def digits_from_end(s):
+    # Check for the presence of digits and '0' in the plate
+    for c in range(2, len(s)):
+        # Check if the character is a digit and not all digits
+        if s[c].isdigit() and not s[c:].isdigit():
+            return False
+    return True    
+
+def first_no_zero(s):
+    for c in range(2, len(s)):    
+        # Check if '0' follows an alphabetic character
+        if s[c] == '0' and s[c - 1].isalpha():
+            return False
+    return True
+
+def only_alnums(s):
+    # Check if the plate contains only alphanumeric characters
+    if not s.isalnum():
+        return False
+    return True
+
+# Call the main function to start the program
+main()
 ```
